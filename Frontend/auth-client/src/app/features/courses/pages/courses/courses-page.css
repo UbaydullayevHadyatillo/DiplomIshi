@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
+
+* { box-sizing: border-box; }
+
+/* ── Umumiy layout (dashboard bilan bir xil) ── */
+.dash-wrapper {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Sora', sans-serif;
+  background: #f1f5f9;
+}
+
+.main-area {
+  flex: 1;
+  padding: 40px 36px;
+  overflow-y: auto;
+}
+
+/* ── Sahifa sarlavhasi ─────────────────────── */
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+
+.page-sub {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ── Yuklanish ────────────────────────────── */
+.loading-state {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #64748b;
+  font-size: 1rem;
+  padding: 40px 0;
+}
+
+.loading-state i {
+  font-size: 1.5rem;
+  color: #6366f1;
+}
+
+/* ── Grid va Kartalar ───────────────────────── */
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+}
+
+.subject-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+  width: 100%;
+  font-family: 'Sora', sans-serif;
+}
+
+.subject-card:hover {
+  border-color: #6366f1;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-icon i {
+  font-size: 1.3rem;
+  color: #6366f1;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.card-sub {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.card-action {
+  font-size: 1.4rem;
+  color: #cbd5e1;
+  transition: color 0.2s;
+}
+
+.subject-card:hover .card-action {
+  color: #6366f1;
+}
+
+/* Empty State */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 0;
+  color: #64748b;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.empty-state p {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 0 4px;
+}
+
+.empty-state span {
+  font-size: 0.9rem;
+}

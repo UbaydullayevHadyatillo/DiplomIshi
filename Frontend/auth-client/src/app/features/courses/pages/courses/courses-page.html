@@ -1,0 +1,40 @@
+<div class="dash-wrapper">
+  <app-sidebar activeRoute="my-courses"></app-sidebar>
+
+  <main class="main-area">
+    <header class="page-header">
+      <div>
+        <h1 class="page-title">Imtihonlar</h1>
+        <p class="page-sub">O'z bilimingizni sinab ko'rish uchun fanlardan birini tanlang</p>
+      </div>
+    </header>
+
+    @if (isLoading()) {
+      <div class="loading-state">
+        <i class="pi pi-spin pi-spinner"></i>
+        <span>Fanlar yuklanmoqda...</span>
+      </div>
+    } @else {
+      <div class="subjects-grid">
+        @for (subject of subjects(); track subject.id) {
+          <button class="subject-card" (click)="startExam(subject.id)">
+            <div class="card-icon">
+              <i class="pi pi-book"></i>
+            </div>
+            <div class="card-body">
+              <span class="card-title">{{ subject.name }}</span>
+              <span class="card-sub">10 ta savol · 10 daqiqa</span>
+            </div>
+            <i class="pi pi-play-circle card-action"></i>
+          </button>
+        } @empty {
+          <div class="empty-state">
+            <i class="pi pi-inbox"></i>
+            <p>Hozircha fanlar mavjud emas.</p>
+            <span>Admin tomonidan qo'shilishi kutilmoqda.</span>
+          </div>
+        }
+      </div>
+    }
+  </main>
+</div>

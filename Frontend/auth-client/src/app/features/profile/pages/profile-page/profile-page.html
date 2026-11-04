@@ -1,0 +1,129 @@
+<div class="dash-wrapper">
+  <app-sidebar activeRoute="profile"></app-sidebar>
+
+  <main class="main-area">
+    <header class="page-header">
+      <div>
+        <h1 class="page-title">Profil</h1>
+        <p class="page-sub">Shaxsiy ma'lumotlaringizni ko'ring va tahrirlang</p>
+      </div>
+    </header>
+
+    @if (isLoading()) {
+      <div class="loading-state">
+        <i class="pi pi-spin pi-spinner"></i>
+        <span>Yuklanmoqda...</span>
+      </div>
+    } @else {
+      @if (profile(); as p) {
+        <div class="profile-card">
+          <!-- Avatar bölümü -->
+          <div class="avatar-section">
+            <div class="avatar">
+              <span>{{ (p.fullName || 'U').charAt(0).toUpperCase() }}</span>
+            </div>
+            <div class="avatar-info">
+              <h2 class="user-name">{{ p.fullName }}</h2>
+              <span class="role-badge" [class.admin-badge]="p.role === 'Admin'">
+                <i class="pi" [class.pi-shield]="p.role === 'Admin'" [class.pi-user]="p.role !== 'Admin'"></i>
+                {{ p.role }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Ma'lumotlar ro'yxati -->
+          <div class="info-list">
+
+            <!-- To'liq ism -->
+            <div class="info-row">
+              <div class="info-label">
+                <i class="pi pi-id-card"></i>
+                <span>To'liq ism</span>
+              </div>
+              <div class="info-value">
+                @if (editingField() === 'fullName') {
+                  <input class="edit-input" type="text"
+                         [value]="editValues().fullName"
+                         (input)="updateEditValue('fullName', $any($event.target).value)"
+                         placeholder="To'liq ismingizni kiriting" />
+                  <div class="edit-actions">
+                    <button class="btn-save" (click)="saveEdit()" [disabled]="isSaving()">
+                      <i class="pi" [class.pi-check]="!isSaving()" [class.pi-spin]="isSaving()" [class.pi-spinner]="isSaving()"></i>
+                    </button>
+                    <button class="btn-cancel" (click)="cancelEdit()">
+                      <i class="pi pi-times"></i>
+                    </button>
+                  </div>
+                } @else {
+                  <strong>{{ p.fullName }}</strong>
+                  <button class="btn-edit" (click)="startEdit('fullName')">
+                    <i class="pi pi-pencil"></i>
+                  </button>
+                }
+              </div>
+            </div>
+
+            <!-- Username -->
+            <div class="info-row">
+              <div class="info-label">
+                <i class="pi pi-at"></i>
+                <span>Username</span>
+              </div>
+              <div class="info-value">
+                @if (editingField() === 'userName') {
+                  <input class="edit-input" type="text"
+                         [value]="editValues().userName"
+                         (input)="updateEditValue('userName', $any($event.target).value)"
+                         placeholder="Username kiriting" />
+                  <div class="edit-actions">
+                    <button class="btn-save" (click)="saveEdit()" [disabled]="isSaving()">
+                      <i class="pi pi-check"></i>
+                    </button>
+                    <button class="btn-cancel" (click)="cancelEdit()">
+                      <i class="pi pi-times"></i>
+                    </button>
+                  </div>
+                } @else {
+                  <strong>&#64;{{ p.userName }}</strong>
+                  <button class="btn-edit" (click)="startEdit('userName')">
+                    <i class="pi pi-pencil"></i>
+                  </button>
+                }
+              </div>
+            </div>
+
+            <!-- Telefon -->
+            <div class="info-row">
+              <div class="info-label">
+                <i class="pi pi-phone"></i>
+                <span>Telefon raqam</span>
+              </div>
+              <div class="info-value">
+                @if (editingField() === 'phoneNumber') {
+                  <input class="edit-input" type="tel"
+                         [value]="editValues().phoneNumber"
+                         (input)="updateEditValue('phoneNumber', $any($event.target).value)"
+                         placeholder="+998901234567" />
+                  <div class="edit-actions">
+                    <button class="btn-save" (click)="saveEdit()" [disabled]="isSaving()">
+                      <i class="pi pi-check"></i>
+                    </button>
+                    <button class="btn-cancel" (click)="cancelEdit()">
+                      <i class="pi pi-times"></i>
+                    </button>
+                  </div>
+                } @else {
+                  <strong>{{ p.phoneNumber }}</strong>
+                  <button class="btn-edit" (click)="startEdit('phoneNumber')">
+                    <i class="pi pi-pencil"></i>
+                  </button>
+                }
+              </div>
+            </div>
+
+          </div><!-- /info-list -->
+        </div><!-- /profile-card -->
+      }
+    }
+  </main>
+</div>

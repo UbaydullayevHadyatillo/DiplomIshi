@@ -1,0 +1,35 @@
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-icon"><i class="pi pi-graduation-cap"></i></div>
+    <span class="brand-name">EduExam</span>
+  </div>
+
+  <nav class="nav-menu">
+    <a class="nav-item" [class.active]="activeRoute === 'dashboard'" (click)="go('/dashboard')">
+      <i class="pi pi-home"></i>
+      <span>Bosh sahifa</span>
+    </a>
+
+    <a class="nav-item" [class.active]="activeRoute === 'my-courses'" (click)="go('/my-courses')">
+      <i class="pi pi-book"></i>
+      <span>Imtihonlar</span>
+    </a>
+
+    <a class="nav-item" [class.active]="activeRoute === 'profile'" (click)="go('/profile')">
+      <i class="pi pi-user"></i>
+      <span>Profil</span>
+    </a>
+
+    @if (isAdmin()) {
+      <a class="nav-item admin" [class.active]="activeRoute === 'admin'" (click)="go('/admin/manage-subject')">
+        <i class="pi pi-cog"></i>
+        <span>Admin Panel</span>
+      </a>
+    }
+  </nav>
+
+  <button class="logout-btn" (click)="logout()">
+    <i class="pi pi-sign-out"></i>
+    <span>Chiqish</span>
+  </button>
+</aside>

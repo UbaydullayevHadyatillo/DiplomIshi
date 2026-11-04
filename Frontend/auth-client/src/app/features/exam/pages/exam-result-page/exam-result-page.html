@@ -1,0 +1,19 @@
+<div class="result-container">
+  <div class="result-card">
+    <h1 class="result-title">Sizning natijangiz!!</h1>
+  
+    <div class="percentage-badge">
+        {{ percentage() }}%
+    </div>
+
+    <div class="actions-stack">
+      <button class="btn btn-primary" (click)="goToReview()">
+        <i class="pi pi-eye"></i> Javoblarni ko'rish
+      </button>
+
+      <button class="btn btn-outline" (click)="goToDashboard()">
+        <i class="pi pi-home"></i> Bosh sahifaga
+      </button>
+    </div>
+  </div>
+</div>

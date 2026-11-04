@@ -1,0 +1,36 @@
+<div class="page">
+  <div class="card">
+    <div class="text-center">
+      <i class="pi pi-telegram tg-logo"></i>
+      <h1>Ro‘yxatdan o‘tishni yakunlash</h1>
+      <p class="subtitle">
+        Akkauntingizni faollashtirish uchun Telegram botimizdan ro'yxatdan o'ting.
+      </p>
+    </div>
+
+    <div class="qr-container">
+      @if (botLink) {
+        <!-- Hech qanday kutubxonasiz, dinamik va xatosiz QR-kod -->
+        <img [src]="qrCodeUrl" alt="Telegram QR" class="qr-code" style="width: 200px; height: 200px;" />
+      } @else {
+        <div class="loading-qr">QR-kod tayyorlanmoqda...</div>
+      }
+      <p class="qr-hint">QR kodni skanerlang yoki pastdagi tugmani bosing</p>
+    </div>
+
+    <div class="actions">
+      <a [href]="botLink" target="_blank" class="tg-button">
+        <i class="pi pi-send"></i>
+        Telegramga o'tish
+      </a>
+
+      <p-button 
+        label="Keyinroq (Login sahifasiga)" 
+        [text]="true" 
+        severity="secondary" 
+        styleClass="w-full mt-3"
+        (onClick)="goToLogin()">
+      </p-button>
+    </div>
+  </div>
+</div>

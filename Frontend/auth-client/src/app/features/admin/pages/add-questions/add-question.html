@@ -1,0 +1,76 @@
+<div class="dash-wrapper">
+  <app-sidebar activeRoute="admin"></app-sidebar>
+
+  <main class="main-area">
+    <header class="page-header">
+      <button class="back-btn" (click)="goBack()">
+        <i class="pi pi-arrow-left"></i>
+        <span>Fanlar ro'yxatiga</span>
+      </button>
+      <h1 class="page-title">Yangi savol qo'shish</h1>
+      <p class="page-sub">Fan #{{ subjectId() }} uchun savol va variantlar yarating</p>
+    </header>
+
+    <div class="form-card">
+
+      <div class="field">
+        <label class="field-label">
+          <i class="pi pi-pencil"></i>
+          Savol matni
+        </label>
+        <textarea
+          pInputTextarea
+          [ngModel]="questionText()"
+          (ngModelChange)="questionText.set($event)"
+          rows="4"
+          placeholder="Savolni to'liq yozing..."
+          class="question-textarea">
+        </textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">
+          <i class="pi pi-list"></i>
+          Variantlar
+        </label>
+        <div class="options-grid">
+          @for (opt of options(); track opt.label; let i = $index) {
+            <div class="option-field">
+              <span class="opt-label">{{ opt.label }}</span>
+              <input
+                pInputText
+                type="text"
+                [value]="opt.text"
+                (input)="updateOptionText(i, $any($event.target).value)"
+                [placeholder]="opt.label + ' variant matni'"
+                class="opt-input"
+              />
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">
+          <i class="pi pi-check-circle"></i>
+          To'g'ri javoblarni belgilang
+        </label>
+        <p-selectButton
+          [options]="correctOptions"
+          [ngModel]="selectedCorrect()"
+          (ngModelChange)="selectedCorrect.set($event)"
+          [multiple]="true"
+          optionLabel="label"
+          optionValue="value">
+        </p-selectButton>
+        <small class="hint-text">Bir yoki bir nechta to'g'ri javob tanlash mumkin (max 3 ta)</small>
+      </div>
+
+      <div class="actions">
+        <button pButton label="Bekor qilish" class="p-button-outlined p-button-secondary" (click)="goBack()"></button>
+        <button pButton label="Saqlash" icon="pi pi-check" class="p-button-success" [loading]="isSaving()" (click)="saveQuestion()"></button>
+      </div>
+
+    </div>
+  </main>
+</div>

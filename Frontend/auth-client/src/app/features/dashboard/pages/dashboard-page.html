@@ -1,0 +1,91 @@
+<div class="dash-wrapper">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="pi pi-graduation-cap"></i></div>
+      <span class="brand-name">EduExam</span>
+    </div>
+
+    <nav class="nav-menu">
+      @if (isAdmin()) {
+        <a class="nav-item admin" (click)="navigateTo('/admin/manage-subject')">
+          <i class="pi pi-cog"></i>
+          <span>Admin Panel</span>
+        </a>
+      }
+
+      <a class="nav-item" (click)="navigateTo('/my-courses')">
+        <i class="pi pi-book"></i>
+        <span>Imtihonlar</span>
+      </a>
+
+      <a class="nav-item" (click)="navigateTo('/profile')">
+        <i class="pi pi-user"></i>
+        <span>Profil</span>
+      </a>
+    </nav>
+
+    <button class="logout-btn" (click)="logout()">
+      <i class="pi pi-sign-out"></i>
+      <span>Chiqish</span>
+    </button>
+  </aside>
+
+  <main class="main-area">
+    <header class="dash-header">
+      <div>
+        <p class="greeting">Xush kelibsiz 👋</p>
+        <h1 class="header-title">{{ fullName() || userName() || 'Foydalanuvchi' }}</h1>
+      </div>
+      <div class="role-chip" [class.admin-chip]="isAdmin()">
+        <i class="pi" [class.pi-shield]="isAdmin() || 'pi-user'"></i>
+        <span>{{ role() || 'Talaba' }}</span>
+      </div>
+    </header>
+
+    <section class="cards-grid">
+      <div class="action-card exam-card" (click)="navigateTo('/my-courses')">
+        <div class="card-icon"><i class="pi pi-play-circle"></i></div>
+        <div class="card-body">
+          <h3>Imtihon boshlash</h3>
+          <p>Fanlardan birini tanlab, bilimingizni sinab ko'ring</p>
+        </div>
+        <i class="pi pi-arrow-right card-arrow"></i>
+      </div>
+
+      <div class="action-card profile-card" (click)="navigateTo('/profile')">
+        <div class="card-icon"><i class="pi pi-id-card\"></i></div>
+        <div class="card-body">
+          <h3>Profil ma'lumotlari</h3>
+          <p>Shaxsiy ma'lumotlaringizni ko'rish va tahrirlash</p>
+        </div>
+        <i class="pi pi-arrow-right card-arrow"></i>
+      </div>
+
+      @if (isAdmin()) {
+        <div class="action-card admin-card" (click)="navigateTo('/admin/manage-subject')">
+          <div class="card-icon"><i class="pi pi-database"></i></div>
+          <div class="card-body">
+            <h3>Fanlarni boshqarish</h3>
+            <p>Savollar va fanlarni qo'shish, tahrirlash</p>
+          </div>
+          <i class="pi pi-arrow-right card-arrow"></i>
+        </div>
+      }
+    </section>
+
+    <div class="info-bar">
+      <div class="info-item">
+        <i class="pi pi-check-circle"></i>
+        <span>Avtomatlashtirilgan test tizimi</span>
+      </div>
+      <div class="info-item">
+        <i class="pi pi-clock"></i>
+        <span>Vaqt bilan chegaralangan imtihonlar</span>
+      </div>
+      <div class="info-item">
+        <i class="pi pi-lock"></i>
+        <span>Xavfsiz va ishonchli nazorat</span>
+      </div>
+    </div>
+  </main>
+</div>

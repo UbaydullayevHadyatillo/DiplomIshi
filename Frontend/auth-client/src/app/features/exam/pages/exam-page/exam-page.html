@@ -1,0 +1,100 @@
+<div class="exam-wrapper">
+
+  @if (isLoading()) {
+    <div class="loading-screen">
+      <i class="pi pi-spin pi-spinner"></i>
+      <p>Savollar yuklanmoqda, iltimos kuting...</p>
+    </div>
+  } @else {
+    
+    <div class="exam-container">
+
+      <div class="exam-header">
+        <div class="subject-info">
+          <div class="subject-badge">
+            <i class="pi pi-book"></i>
+            <span>{{ subjectName() }}</span>
+          </div>
+          <div class="progress-info">
+            <span class="answered-count">
+              {{ answeredCount() }} / {{ questions().length }} javoblandi
+            </span>
+          </div>
+        </div>
+
+        <div class="timer" 
+             [class.danger]="timeLeft() < 120" 
+             [class.critical-pulse]="isTimeCritical()">
+          <i class="pi pi-clock" [class.pi-spin]="isTimeCritical()"></i>
+          <span>{{ formattedTime() }}</span>
+        </div>
+      </div>
+
+      <div class="questions-nav">
+        @for (q of questions(); track q.id; let i = $index) {
+          <button
+            class="nav-btn"
+            [class.active]="currentIdx() === i"
+            [class.answered]="isAnswered(q.id)"
+            (click)="goToQuestion(i)">
+            {{ i + 1 }}
+          </button>
+        }
+      </div>
+
+      @if (currentQuestion(); as q) {
+        <div class="question-box">
+          <div class="question-header">
+            <span class="question-number">Savol #{{ currentIdx() + 1 }}</span>
+            <p class="question-text">{{ q.text }}</p>
+          </div>
+
+          <div class="options-list">
+            @for (opt of q.options; track opt.id; let optIdx = $index) {
+              <div
+                class="option-item"
+                [class.selected]="isSelected(q.id, opt.id)"
+                (click)="toggleOption(q, opt.id)">
+                
+                <div class="option-prefix" [class.selected-prefix]="isSelected(q.id, opt.id)">
+                  {{ getOptionLabel(optIdx) }}
+                </div>
+                
+                <div class="option-content">{{ opt.text }}</div>
+                
+                @if (isSelected(q.id, opt.id)) {
+                  <i class="pi pi-check option-check"></i>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      <div class="exam-footer">
+        <div class="nav-group">
+          <button class="arrow-btn" (clickattachment)="prevQuestion()" (click)="prevQuestion()" [disabled]="currentIdx() === 0">
+            <i class="pi pi-angle-left"></i>
+            <span>Oldingi</span>
+          </button>
+          <button class="arrow-btn" (click)="nextQuestion()" [disabled]="currentIdx() === questions().length - 1">
+            <span>Keyingi</span>
+            <i class="pi pi-angle-right"></i>
+          </button>
+        </div>
+
+        <button class="submit-btn" (click)="submitExam()" [disabled]="isSubmitting()">
+          @if (isSubmitting()) {
+            <i class="pi pi-spin pi-spinner"></i>
+            <span>Saqlanmoqda...</span>
+          } @else {
+            <i class="pi pi-check-circle"></i>
+            <span>Imtihonni yakunlash</span>
+          }
+        </button>
+      </div>
+
+    </div>
+  }
+
+</div>

@@ -1,0 +1,49 @@
+<div class="page">
+  <div class="card">
+    <h1>Ro‘yxatdan o‘tish</h1>
+    <p class="subtitle">Yangi foydalanuvchi ma’lumotlarini kiriting.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <label for="fullName">To‘liq ism</label>
+      <input
+        id="fullName"
+        type="text"
+        formControlName="fullName"
+        placeholder="Ism familiyangizni kiriting"
+      />
+      @if (fullNameControl.invalid && fullNameControl.touched) {
+        <div class="error">Ismingizni to‘liq kiriting.</div>
+      }
+
+      <label for="userName">Username</label>
+      <input
+        id="userName"
+        type="text"
+        formControlName="userName"
+        placeholder="Username kiriting"
+      />
+      @if (userNameControl.invalid && userNameControl.touched) {
+        <div class="error">Username noto‘g‘ri kiritildi.</div>
+      }
+
+      <label for="phoneNumber">Telefon raqam</label>
+      <input
+        id="phoneNumber"
+        type="text"
+        formControlName="phoneNumber"
+        placeholder="+998901234567"
+      />
+      @if (phoneNumberControl.invalid && phoneNumberControl.touched) {
+        <div class="error">Telefon raqam noto‘g‘ri kiritildi.</div>
+      }
+
+      <button type="submit" [disabled]="isLoading()">
+        {{ isLoading() ? 'Saqlanmoqda...' : 'Ro‘yxatdan o‘tish' }}
+      </button>
+
+      <button type="button" class="secondary" (click)="goToLogin()">
+        Login sahifasiga qaytish
+      </button>
+    </form>
+  </div>
+</div>

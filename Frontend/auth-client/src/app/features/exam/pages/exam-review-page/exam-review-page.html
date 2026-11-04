@@ -1,0 +1,73 @@
+<div class="review-wrapper">
+  <div class="card review-card">
+
+    <div class="review-header">
+      <div class="info">
+        <h3>Test Tahlili</h3>
+        <span class="progress-text">Savol: {{ currentIdx() + 1 }} / {{ questions().length }}</span>
+      </div>
+      <button class="back-to-result-btn" (click)="goBack()">
+        <i class="pi pi-arrow-left"></i> Natijaga qaytish
+      </button>
+    </div>
+
+    <!-- Savol navigatsiyasi -->
+    <div class="nav-grid">
+      @for (q of questions(); track q.questionId; let i = $index) {
+        <button class="nav-item"
+                [class.active]="currentIdx() === i"
+                [class.correct]="q.isCorrect"
+                [class.wrong]="!q.isCorrect"
+                (click)="currentIdx.set(i)">
+          {{ i + 1 }}
+        </button>
+      }
+    </div>
+
+    <!-- Joriy savol -->
+    @if (currentQuestion(); as q) {
+      <div class="question-section">
+        <p class="question-text">{{ q.questionText }}</p>
+
+        <div class="options-container">
+          <!-- BUG FIX: $index -> let i = $index orqali ishlatiladi -->
+          @for (opt of q.options; track opt.id; let i = $index) {
+            <div class="option-row" [ngClass]="getOptionClass(opt.id)">
+              <div class="opt-content">
+                <span class="opt-label">{{ getOptionLabel(i) }}</span>
+                <span class="opt-text">{{ opt.text }}</span>
+              </div>
+              <div class="opt-status">
+                @if (getOptionClass(opt.id) === 'opt-user-correct') {
+                  <i class="pi pi-check-circle" style="color: #10b981;"></i>
+                } @else if (getOptionClass(opt.id) === 'opt-user-wrong') {
+                  <i class="pi pi-times-circle" style="color: #ef4444;"></i>
+                } @else if (getOptionClass(opt.id) === 'opt-system-correct') {
+                  <i class="pi pi-check-circle" style="color: #f59e0b;"></i>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Izoh -->
+        <div class="result-hint" [class.correct-hint]="q.isCorrect" [class.wrong-hint]="!q.isCorrect">
+          <i class="pi" [class.pi-check-circle]="q.isCorrect" [class.pi-times-circle]="!q.isCorrect"></i>
+          <span>{{ q.isCorrect ? "To'g'ri javob!" : "Noto'g'ri javob." }}</span>
+        </div>
+      </div>
+    }
+
+    <!-- Footer navigatsiya -->
+    <div class="review-footer">
+      <button (click)="prev()" [disabled]="currentIdx() === 0" class="footer-btn">
+        <i class="pi pi-angle-left"></i> Oldingi
+      </button>
+      <span class="page-counter">{{ currentIdx() + 1 }} / {{ questions().length }}</span>
+      <button (click)="next()" [disabled]="currentIdx() === questions().length - 1" class="footer-btn">
+        Keyingi <i class="pi pi-angle-right"></i>
+      </button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,187 @@
+.review-wrapper {
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  background: #f1f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.review-card {
+  width: 100%;
+  max-width: 860px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.review-header h3 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.back-to-result-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1e293b;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-to-result-btn:hover {
+  background: #334155;
+  transform: translateX(-3px);
+}
+
+/* Navigatsiya tugmalari */
+.nav-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  justify-content: center;
+}
+
+.nav-item {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #cbd5e1;
+  color: #1e293b;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-item.active {
+  border-color: #3b82f6;
+  background: #3b82f6;
+  color: #fff;
+}
+
+.nav-item.correct { background: #d1fae5; color: #065f46; }
+.nav-item.wrong   { background: #fee2e2; color: #991b1b; }
+.nav-item.correct.active { background: #10b981; color: #fff; border-color: #10b981; }
+.nav-item.wrong.active   { background: #ef4444; color: #fff; border-color: #ef4444; }
+
+/* Savol qismi */
+.question-section { margin-bottom: 2rem; }
+
+.question-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.opt-default      { background: #f8fafc; border-color: #e2e8f0; color: #334155; }
+.opt-user-correct { background: #d1fae5; border-color: #10b981; color: #065f46; }
+.opt-user-wrong   { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+.opt-system-correct {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+  border-style: dashed;
+}
+
+.opt-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.opt-label { font-weight: 800; min-width: 28px; }
+
+/* Natija holati */
+.result-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.correct-hint { background: #d1fae5; color: #065f46; }
+.wrong-hint   { background: #fee2e2; color: #991b1b; }
+
+/* Footer */
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #f1f5f9;
+  padding-top: 1.5rem;
+}
+
+.footer-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  background: #f1f5f9;
+  color: #475569;
+  transition: background 0.2s;
+}
+
+.footer-btn:hover:not(:disabled) { background: #e2e8f0; }
+.footer-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.page-counter {
+  font-weight: 700;
+  color: #64748b;
+  font-size: 0.9rem;
+}

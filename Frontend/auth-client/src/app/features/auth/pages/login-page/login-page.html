@@ -1,0 +1,46 @@
+<div class="page">
+  <div class="card">
+
+    <button type="button" class="back-btn" (click)="goHome()">
+      <i class="pi pi-arrow-left"></i>
+      <span>Orqaga</span>
+    </button>
+
+    <h1>Tizimga kirish</h1>
+    <p class="subtitle">Username yoki telefon raqamingizni kiriting.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <label for="identifier">Login</label>
+      <input
+        id="identifier"
+        type="text"
+        formControlName="identifier"
+        placeholder="Username yoki telefon raqam"
+        autocomplete="username"
+      />
+
+      @if (identifierControl.invalid && identifierControl.touched) {
+        <div class="error-row">
+          <div class="error">
+            <i class="pi pi-exclamation-circle"></i>
+            Identifier noto'g'ri kiritildi.
+          </div>
+          <button type="button" class="register-link" (click)="goToRegister()">Ro'yxatdan o'tish</button>
+        </div>
+      } @else {
+        <div class="register-box">
+          <button type="button" class="register-link" (click)="goToRegister()">Ro'yxatdan o'tish</button>
+        </div>
+      }
+
+      <button type="submit" [disabled]="isLoading()">
+        @if (isLoading()) {
+          <i class="pi pi-spin pi-spinner"></i> Yuborilmoqda...
+        } @else {
+          <span>Kod olish</span>
+        }
+      </button>
+    </form>
+
+  </div>
+</div>

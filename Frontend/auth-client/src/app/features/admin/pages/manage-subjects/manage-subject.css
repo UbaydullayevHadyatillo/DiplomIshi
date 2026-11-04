@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
+
+* { box-sizing: border-box; }
+
+.dash-wrapper {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Sora', sans-serif;
+  background: #f1f5f9;
+}
+
+.main-area {
+  flex: 1;
+  padding: 40px 36px;
+  overflow-y: auto;
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+
+.page-sub {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ── Kartalar ────────────────────────────── */
+.add-card,
+.subjects-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.count-badge {
+  background: #ede9fe;
+  color: #6366f1;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* Fan qo'shish formasi */
+.add-row {
+  display: flex;
+  gap: 12px;
+}
+
+.subject-input {
+  flex: 1;
+  height: 44px;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  padding: 0 16px;
+  font-family: 'Sora', sans-serif;
+}
+
+.subject-input:focus {
+  border-color: #6366f1;
+  outline: none;
+}
+
+.add-btn {
+  height: 44px;
+  border-radius: 10px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  padding: 0 20px;
+}
+
+/* Fanlar ro'yxati */
+.subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subject-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #fafafa;
+  border: 2px solid #f1f5f9;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.subject-item:hover {
+  border-color: #6366f1;
+  background: #f5f3ff;
+  transform: translateX(4px);
+}
+
+.subject-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.subject-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subject-icon i {
+  color: #6366f1;
+  font-size: 1rem;
+}
+
+.subject-name {
+  display: block;
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+.subject-hint {
+  display: block;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.subject-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+}
+
+.action-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6366f1;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.subject-item:hover .action-label {
+  opacity: 1;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 0;
+  color: #64748b;
+}
+
+.empty-state i {
+  font-size: 2.5rem;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.empty-state span {
+  font-size: 0.85rem;
+}

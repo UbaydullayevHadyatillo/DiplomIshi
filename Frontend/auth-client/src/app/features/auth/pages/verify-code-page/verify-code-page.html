@@ -1,0 +1,51 @@
+<div class="page">
+  <div class="card">
+    <button type="button" class="back-btn" (click)="goBack()">
+      <i class="pi pi-arrow-left"></i>
+      <span>Orqaga</span>
+    </button>
+
+    <div class="icon-wrap">
+      <i class="pi pi-telegram"></i>
+    </div>
+
+    <h1>Kodni tasdiqlang</h1>
+    <p class="subtitle">
+      Telegram botiga yuborilgan 6 xonali kodni kiriting.
+      @if (identifier()) {
+        <br>
+        <span class="identifier-hint">Login: <strong>{{ identifier() }}</strong></span>
+      }
+    </p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <label for="code">Tasdiqlash kodi</label>
+      <input
+        id="code"
+        type="text"
+        formControlName="code"
+        placeholder="123456"
+        maxlength="6"
+        autocomplete="one-time-code"
+        class="code-input"
+      />
+
+      @if (codeControl.invalid && codeControl.touched) {
+        <div class="error">
+          <i class="pi pi-exclamation-circle"></i>
+          6 xonali kodni to'liq kiriting.
+        </div>
+      }
+
+      <button type="submit" [disabled]="isLoading()">
+        @if (isLoading()) {
+          <i class="pi pi-spin pi-spinner"></i>
+          <span>Tekshirilmoqda...</span>
+        } @else {
+          <i class="pi pi-check-circle"></i>
+          <span>Tasdiqlash</span>
+        }
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f7fb;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  background: #eff4f5;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgb(11, 1, 1);
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color : rgb(11, 1, 1);
+}
+
+.subtitle {
+  margin: 0 0 24px;
+  color: #00040b;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-weight: 600;
+  color : rgb(11, 1, 1);
+}
+
+input {
+  height: 44px;
+  border: 1px solid #00040a;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 15px;
+  outline: none;
+  background: #eff4f5;
+  color :rgb(11, 1, 1)
+}
+
+input:focus {
+  border-color: #42659d;
+}
+
+button {
+  margin-top: 8px;
+  height: 44px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #2563eb;
+  color: #eef0f7;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 13px;
+}
