@@ -1,0 +1,52 @@
+﻿# ==========================================
+# 1. Backend (.NET / Visual Studio)
+# ==========================================
+**/bin/
+**/obj/
+**/.vs/
+*.user
+*.suo
+
+# Maxfiy fayllar (GitHub'ga chiqib ketmasligi uchun)
+**/appsettings.json
+
+# ==========================================
+# 2. Frontend (Angular / Node.js)
+# ==========================================
+**/node_modules/
+**/dist/
+**/tmp/
+**/out-tsc/
+**/bazel-out/
+**/.angular/
+
+# Logs & Environment
+npm-debug.log
+yarn-error.log
+testem.log
+/libpeerconnection.log
+
+# Editors & IDEs
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
+# Misc & System files
+.sass-cache/
+/connect.lock
+/coverage
+/typings
+__screenshots__/
+.DS_Store
+Thumbs.db
