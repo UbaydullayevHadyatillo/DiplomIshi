@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./Backend
+    ports:
+      - "5000:8080"
+    restart: always
+
+  frontend:
+    build: ./Frontend/auth-client
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
